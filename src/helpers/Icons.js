@@ -1,5 +1,6 @@
 import Ionicons from 'react-native-vector-icons/Ionicons';
 // import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import Feather from 'react-native-vector-icons/Feather';
 
 // define your suffixes by yourself..
 // here we use active, big, small, very-big..
@@ -13,6 +14,10 @@ const icons = {
   'md-flame': [30, '#bbb'],
   'logo-github': [30, '#bbb'],
   'logo-octocat': [30, '#bbb'],
+  home: [20, '#bbb', Feather],
+  user: [20, '#bbb', Feather],
+  zap: [20, '#bbb', Feather],
+  'more-horizontal': [20, '#bbb', Feather],
 };
 
 const defaultIconProvider = Ionicons;
