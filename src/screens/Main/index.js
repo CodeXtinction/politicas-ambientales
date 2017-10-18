@@ -6,11 +6,9 @@ import style from './style';
 class Main extends Component {
   static navigatorStyle = {
     ...screnOpts.MAIN,
-  }
+  };
   render() {
-    return (
-      <View style={style.container} />
-    );
+    return <View style={style.container} />;
   }
 }
 

@@ -2,14 +2,13 @@
 
 import React, { Component } from 'react';
 import { View, FlatList } from 'react-native';
-
-import posts from 'data/post';
 import Card from 'components/Card';
-import ListHeader from 'components/ListHeader';
+import posts from 'data/post';
 
 import style from './style';
+import Avatar from './Avatar';
 
-class Feed extends Component {
+class Profile extends Component {
   constructor(props) {
     super(props);
     this.pushPost = this.pushPost.bind(this);
@@ -37,7 +36,7 @@ class Feed extends Component {
     return (
       <View style={style.container}>
         <FlatList
-          ListHeaderComponent={() => <ListHeader title="RECIENTES" />}
+          ListHeaderComponent={() => <Avatar />}
           data={posts}
           renderItem={({ item }) => <Card post={item} onPress={this.pushPost} />}
         />
@@ -46,4 +45,4 @@ class Feed extends Component {
   }
 }
 
-export default Feed;
+export default Profile;

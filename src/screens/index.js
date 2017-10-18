@@ -8,13 +8,15 @@ import Profile from './Profile';
 import Create from './Create';
 import Post from './Post';
 import NavBar from '../components/NavBar';
+import Composer from './Composer';
 
-export default function registerScreens() {
-  Navigation.registerComponent(screens.MAIN.screen, () => Main);
-  Navigation.registerComponent(screens.HOME.screenId, () => Home);
-  Navigation.registerComponent(screens.FEED.screenId, () => Feed);
-  Navigation.registerComponent(screens.PROFILE.screenId, () => Profile);
-  Navigation.registerComponent('normas.Create', () => Create);
+export default function registerScreens(store: {}, Provider: {}) {
+  Navigation.registerComponent(screens.MAIN.screen, () => Main, store, Provider);
+  Navigation.registerComponent(screens.HOME.screenId, () => Home, store, Provider);
+  Navigation.registerComponent(screens.FEED.screenId, () => Feed, store, Provider);
+  Navigation.registerComponent(screens.PROFILE.screenId, () => Profile, store, Provider);
+  Navigation.registerComponent(screens.CREATE.screen, () => Create, store, Provider);
+  Navigation.registerComponent(screens.COMPOSER.screen, () => Composer, store, Provider);
   Navigation.registerComponent('normas.Post', () => Post);
   Navigation.registerComponent('normas.NavBar', () => NavBar);
 }

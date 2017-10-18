@@ -1,11 +1,12 @@
 import { StyleSheet } from 'react-native';
 import { colors, center, fontFamily } from 'utils/theme';
 
-
 export default StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.background,
+    borderTopWidth: 1,
+    borderColor: colors.borderSeparator,
   },
   main: {
     flex: 2,
@@ -15,8 +16,8 @@ export default StyleSheet.create({
     width: 160,
     height: 160,
     borderRadius: 160 / 2,
-    borderWidth: 1,
-    borderColor: colors.borders,
+    // borderWidth: 1,
+    // borderColor: colors.heading3,
     ...center,
   },
   legend: {
@@ -24,7 +25,7 @@ export default StyleSheet.create({
     alignItems: 'center',
   },
   title: {
-    ...fontFamily.bold,
+    ...fontFamily.medium,
     color: colors.heading1,
     fontSize: 16,
   },

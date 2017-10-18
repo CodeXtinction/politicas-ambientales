@@ -14,10 +14,10 @@ const icons = {
   'md-flame': [30, '#bbb'],
   'logo-github': [30, '#bbb'],
   'logo-octocat': [30, '#bbb'],
-  home: [20, '#bbb', Feather],
-  user: [20, '#bbb', Feather],
-  zap: [20, '#bbb', Feather],
-  'more-horizontal': [20, '#bbb', Feather],
+  home: [22, '#bbb', Feather],
+  user: [22, '#bbb', Feather],
+  zap: [22, '#bbb', Feather],
+  'more-horizontal': [22, '#bbb', Feather],
 };
 
 const defaultIconProvider = Ionicons;

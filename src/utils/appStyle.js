@@ -1,13 +1,14 @@
 import { colors } from './theme';
 
 export default {
-  selectedTopTabIndicatorHeight: 4,
-  selectedTopTabIndicatorColor: colors.highlight,
-  selectedTopTabTextColor: colors.highlight,
+  selectedTopTabIndicatorHeight: 5,
+  selectedTopTabIndicatorColor: colors.heading1,
+  selectedTopTabTextColor: colors.heading1,
   topTabsScrollable: false,
-  topTabIconColor: colors.heading1,
+  topTabIconColor: colors.heading3,
   topTabTextColor: colors.heading1,
-  selectedTopTabIconColor: colors.highlight,
+  selectedTopTabIconColor: colors.heading1,
   orientation: 'portrait',
-  statusBarColor: colors.main,
+  statusBarColor: colors.background3,
+  // statusBarTextColorScheme: 'light',
 };

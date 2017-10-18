@@ -1,18 +1,17 @@
 import { StyleSheet } from 'react-native';
 import { colors, fontFamily } from 'utils/theme';
 
-
 export default StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
-    height: 40,
+    height: 44,
   },
   avatar: {
     width: 40,
     height: 40,
-    borderRadius: 20,
+    borderRadius: 50,
     borderWidth: 2,
     borderColor: colors.borderSeparator,
   },
@@ -22,7 +21,7 @@ export default StyleSheet.create({
     justifyContent: 'center',
   },
   autor: {
-    ...fontFamily.bold,
+    ...fontFamily.medium,
     fontSize: 11,
     color: colors.heading1,
   },

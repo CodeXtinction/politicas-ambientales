@@ -7,11 +7,12 @@ const style = StyleSheet.create({
     height: 50,
     paddingHorizontal: 20,
     justifyContent: 'center',
+    backgroundColor: colors.background,
   },
   title: {
-    ...fontFamily.bold,
-    fontSize: 16,
-    color: colors.heading1,
+    ...fontFamily.medium,
+    fontSize: 14,
+    color: colors.heading2,
   },
 });
 

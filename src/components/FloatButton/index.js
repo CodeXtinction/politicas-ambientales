@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, TouchableNativeFeedback } from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
+import Feather from 'react-native-vector-icons/Feather';
 import style from './style';
 
 function FloatButton({ onPress }) {
@@ -11,7 +11,7 @@ function FloatButton({ onPress }) {
         background={TouchableNativeFeedback.Ripple('#fafafa', true)}
       >
         <View style={style.icon}>
-          <Icon name="md-add" size={24} color="#fff" />
+          <Feather name="edit-2" size={24} color="#fff" />
         </View>
       </TouchableNativeFeedback>
     </View>

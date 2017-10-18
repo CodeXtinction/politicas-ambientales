@@ -1,12 +1,15 @@
 export const colors = {
   main: '#FF696A',
-  primary: '#20A598',
+  conference: '#FF357B',
+  black: '#000',
+  primary: '#5dd7c7',
   primary2: '#3BB2C7',
-  background: '#ebeff1',
+  background: '#F5F5F5',
   backgroundLight: '#fff',
-  heading1: '#4C6785',
-  heading2: '#7B8E9F',
-  heading3: '#95A2B2',
+  background3: '#fafafa',
+  heading1: '#464849',
+  heading2: '#7E8792',
+  heading3: '#ACB0B5',
   paragraph: '#2A4765',
   highlight: '#fff',
   borders: '#7B8E9F',
@@ -15,13 +18,16 @@ export const colors = {
 
 export const fontFamily = {
   bold: {
-    fontFamily: 'lato_bold',
+    fontFamily: 'rubik_bold',
+  },
+  medium: {
+    fontFamily: 'rubik_medium',
   },
   regular: {
-    fontFamily: 'lato_regular',
+    fontFamily: 'rubik_regular',
   },
   light: {
-    fontFamily: 'lato_light',
+    fontFamily: 'rubik_light',
   },
 };
 

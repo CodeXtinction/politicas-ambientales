@@ -1,14 +1,12 @@
 /* eslint-disable react/prefer-stateless-function */
 
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
+import { View, Text, StatusBar } from 'react-native';
+import Feather from 'react-native-vector-icons/Feather';
 import { colors } from 'utils/theme';
-
 import FloatButton from 'components/FloatButton';
-
+import { screens } from 'utils/constants';
 import style from './style';
-
 
 class Home extends Component {
   constructor(props) {
@@ -16,9 +14,14 @@ class Home extends Component {
     this.pushCreate = this.pushCreate.bind(this);
   }
 
+  componentDidMount() {
+    StatusBar.setBarStyle('dark-content');
+    // StatusBar.setHidden(true);
+  }
+
   pushCreate() {
     this.props.navigator.push({
-      screen: 'normas.Create',
+      ...screens.CREATE,
     });
   }
 
@@ -27,7 +30,7 @@ class Home extends Component {
       <View style={style.container}>
         <View style={style.main}>
           <View style={style.icon}>
-            <Icon name="ios-leaf-outline" size={100} color={colors.heading2} />
+            <Feather name="sun" size={70} color={colors.primary2} />
           </View>
         </View>
         <View style={style.legend}>
@@ -39,6 +42,5 @@ class Home extends Component {
     );
   }
 }
-
 
 export default Home;

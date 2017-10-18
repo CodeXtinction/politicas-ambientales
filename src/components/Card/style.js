@@ -1,15 +1,14 @@
 import { StyleSheet } from 'react-native';
 import { colors, fontFamily, center } from 'utils/theme';
 
-
 export default StyleSheet.create({
   container: {
     paddingHorizontal: 20,
     paddingVertical: 10,
     backgroundColor: colors.backgroundLight,
-    // borderBottomWidth: 1,
-    // borderColor: colors.borderSeparator,
-    marginBottom: 1,
+    marginBottom: 5,
+    marginHorizontal: 10,
+    borderRadius: 8,
   },
   header: {
     flexDirection: 'row',
@@ -23,7 +22,7 @@ export default StyleSheet.create({
   },
   text: {
     color: colors.highlight,
-    ...fontFamily.bold,
+    ...fontFamily.medium,
     fontSize: 9,
   },
   middle: {
@@ -32,7 +31,7 @@ export default StyleSheet.create({
   title: {
     fontSize: 14,
     color: colors.heading2,
-    ...fontFamily.bold,
+    ...fontFamily.medium,
     paddingBottom: 4,
   },
   description: {
