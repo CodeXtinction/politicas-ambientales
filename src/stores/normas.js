@@ -18,6 +18,7 @@ class Store {
   @action
   clearPost() {
     this.newPost = post;
+    // test
   }
 
   createPost() {
