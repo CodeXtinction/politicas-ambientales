@@ -8,6 +8,7 @@ axios.defaults.headers.common.Authorization =
 class Store {
   @observable newPost = post;
   @observable posts = [];
+  @observable isLogged = true;
 
   @action
   handleChange(key, value) {
@@ -22,6 +23,11 @@ class Store {
   createPost() {
     console.log(toJS(this.newPost));
     return axios.post('http://192.168.0.103:3000/api/v1/posts/', toJS(this.newPost));
+  }
+
+  @action
+  Login() {
+    this.isLogged = !this.isLogged;
   }
 }
 

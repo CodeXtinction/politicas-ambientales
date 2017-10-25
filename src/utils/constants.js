@@ -30,9 +30,18 @@ export const screnOpts = {
     topBarElevationShadowEnabled: false,
     navBarTitleTextCentered: true,
   },
+  ROOT: {
+    navBarHidden: true,
+  },
+  LOGIN: {
+    navBarHidden: true,
+  },
 };
 
 export const screens = {
+  ROOT: {
+    screen: 'normas.Root',
+  },
   MAIN: {
     screen: 'normas.Main',
     title: 'CREANDO REDES',
@@ -51,7 +60,10 @@ export const screens = {
     title: 'NUEVA POLITICA',
   },
   COMPOSER: {
-    screen: 'norma.Composer',
+    screen: 'normas.Composer',
     title: 'YA CASI!',
+  },
+  LOGIN: {
+    screen: 'normas.Login',
   },
 };

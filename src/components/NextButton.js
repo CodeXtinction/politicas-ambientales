@@ -7,32 +7,31 @@ const style = StyleSheet.create({
   container: {
     paddingVertical: 15,
     justifyContent: 'center',
-    alignItems: 'flex-end',
     marginHorizontal: 10,
   },
   button: {
     paddingHorizontal: 15,
     paddingVertical: 10,
     alignItems: 'center',
-    // backgroundColor: colors.backgroundLight,
     flexDirection: 'row',
     borderRadius: 2,
   },
   text: {
-    ...fontFamily.bold,
+    ...fontFamily.medium,
     color: colors.primary2,
     fontSize: 14,
-    paddingRight: 5,
+    paddingHorizontal: 5,
   },
 });
 
-function NextButton({ onPress, title }) {
+function NextButton({ onPress, title, isLeft }) {
   return (
-    <View style={style.container}>
+    <View style={[style.container, { alignItems: isLeft ? 'flex-start' : 'flex-end' }]}>
       <TouchableNativeFeedback onPress={onPress}>
         <View style={style.button}>
+          {isLeft && <Feather name="arrow-left" size={24} color={colors.primary2} />}
           <Text style={style.text}>{title}</Text>
-          <Feather name="arrow-right" size={24} color={colors.primary2} />
+          {!isLeft && <Feather name="arrow-right" size={24} color={colors.primary2} />}
         </View>
       </TouchableNativeFeedback>
     </View>

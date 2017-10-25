@@ -4,6 +4,7 @@ export const colors = {
   black: '#000',
   primary: '#5dd7c7',
   primary2: '#3BB2C7',
+  primary3: '#396afc',
   background: '#F5F5F5',
   backgroundLight: '#fff',
   background3: '#fafafa',
@@ -12,7 +13,7 @@ export const colors = {
   heading3: '#ACB0B5',
   paragraph: '#2A4765',
   highlight: '#fff',
-  borders: '#7B8E9F',
+  borders: '#e6e6e6',
   borderSeparator: '#e6e6e6',
 };
 

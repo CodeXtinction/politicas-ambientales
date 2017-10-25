@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react/native';
-import { View, Text, TextInput, ScrollView } from 'react-native';
+import { View, TextInput } from 'react-native';
 import { screnOpts, screens } from 'utils/constants';
 import { colors } from 'utils/theme';
 
