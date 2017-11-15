@@ -4,8 +4,10 @@ import { colors, center, fontFamily } from 'utils/theme';
 export default StyleSheet.create({
   container: {
     ...center,
-    backgroundColor: colors.background3,
-    marginBottom: 1,
+    backgroundColor: colors.backgroundLight,
+    margin: 10,
+    borderRadius: 10,
+    marginBottom: 10,
   },
   top: {
     width: '100%',
@@ -15,16 +17,17 @@ export default StyleSheet.create({
     marginTop: -61,
     width: 120,
     height: 120,
-    borderWidth: 3,
-    borderColor: colors.backgroundLight,
     borderRadius: 100,
     ...center,
-    elevation: 16,
+    borderWidth: 2,
+    borderColor: colors.backgroundLight,
   },
-  initials: {
-    ...fontFamily.light,
-    fontSize: 30,
-    color: colors.highlight,
+  photo: {
+    width: 120,
+    height: 120,
+    borderRadius: 60,
+    borderWidth: 3,
+    borderColor: colors.borders,
   },
   wall: {
     flex: 1,
@@ -42,16 +45,14 @@ export default StyleSheet.create({
     marginRight: -70,
     width: 40,
     height: 40,
-    backgroundColor: colors.backgroundLight,
-    borderWidth: 1,
-    borderColor: colors.backgroundLight,
+    backgroundColor: colors.yellowBoom,
     borderRadius: 60,
     ...center,
-    elevation: 16,
+    elevation: 8,
   },
   number: {
     ...fontFamily.medium,
-    color: colors.heading1,
+    color: colors.highlight,
     fontSize: 16,
   },
   name: {
@@ -68,12 +69,32 @@ export default StyleSheet.create({
   history: {
     alignSelf: 'stretch',
     height: 50,
-    justifyContent: 'center',
-    paddingHorizontal: 20,
+    alignItems: 'center',
+    // paddingHorizontal: 20,
+    marginTop: 10,
+    flexDirection: 'row',
   },
   separator: {
     ...fontFamily.medium,
-    color: colors.heading1,
+    color: colors.heading2,
     fontSize: 14,
+  },
+  icon: {
+    paddingLeft: 20,
+    height: 50,
+    ...center,
+  },
+  logout: {
+    paddingHorizontal: 7,
+    paddingVertical: 4,
+    backgroundColor: colors.violet,
+    ...center,
+    marginTop: 10,
+    borderRadius: 4,
+  },
+  logOutText: {
+    color: colors.highlight,
+    ...fontFamily.bold,
+    fontSize: 12,
   },
 });

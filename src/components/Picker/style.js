@@ -18,8 +18,6 @@ export default StyleSheet.create({
   picker: {
     flex: 5,
     height: 40,
-    // borderWidth: 1,
-    // borderColor: colors.background,
     backgroundColor: colors.background3,
     justifyContent: 'center',
     borderRadius: 4,
@@ -33,7 +31,7 @@ export default StyleSheet.create({
   line: {
     width: 1,
     height: '100%',
-    backgroundColor: colors.borderSeparator,
+    backgroundColor: colors.borders,
   },
   circle: {
     width: 15,
@@ -41,6 +39,6 @@ export default StyleSheet.create({
     borderRadius: 50,
     marginLeft: -8.5,
     borderWidth: 2,
-    borderColor: colors.borderSeparator,
+    borderColor: colors.borders,
   },
 });

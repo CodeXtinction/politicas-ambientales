@@ -1,14 +1,16 @@
-/* eslint-disable react/prefer-stateless-function  */
-
 import React, { Component } from 'react';
-import { View, FlatList } from 'react-native';
+import { inject, observer } from 'mobx-react';
+import { View, FlatList, RefreshControl } from 'react-native';
+import { screens } from 'utils/constants';
 
-import posts from 'data/post';
 import Card from 'components/Card';
 import ListHeader from 'components/ListHeader';
+import EmptyList from './EmptyList';
 
 import style from './style';
 
+@inject('normas')
+@observer
 class Feed extends Component {
   constructor(props) {
     super(props);
@@ -17,14 +19,11 @@ class Feed extends Component {
 
   pushPost(post) {
     this.props.navigator.push({
-      screen: 'normas.Post',
+      ...screens.POST,
       passProps: {
         post,
       },
       navigatorStyle: {
-        navBarBackgroundColor: '#fff',
-        tabBarHidden: true,
-        navBarHideOnScroll: true,
         navBarCustomView: 'normas.NavBar',
         navBarCustomViewInitialProps: {
           post,
@@ -34,12 +33,19 @@ class Feed extends Component {
   }
 
   render() {
+    const { normas } = this.props;
     return (
       <View style={style.container}>
         <FlatList
+          ListEmptyComponent={() => <EmptyList />}
           ListHeaderComponent={() => <ListHeader title="RECIENTES" />}
-          data={posts}
+          data={normas.postDataSource}
           renderItem={({ item }) => <Card post={item} onPress={this.pushPost} />}
+          keyExtractor={item => item._id}
+          style={style.list}
+          refreshControl={
+            <RefreshControl refreshing={normas.refreshing} onRefresh={() => normas.getPosts()} />
+          }
         />
       </View>
     );

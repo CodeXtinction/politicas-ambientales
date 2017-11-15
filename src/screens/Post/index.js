@@ -1,43 +1,42 @@
-/* eslint-disable react/prefer-stateless-function */
-
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Image, ScrollView } from 'react-native';
+import { ScrollView, StatusBar, View } from 'react-native';
+import { screnOpts } from 'utils/constants';
+import { colors } from 'utils/theme';
+import style from './style';
 
+import PostTitle from './PostTitle';
 import Field from './Fields';
 import Article from './Article';
+import Category from './Category';
 
 class Post extends Component {
+  static navigatorStyle = {
+    ...screnOpts.POST,
+  };
+  componentDidMount() {
+    StatusBar.setHidden(true);
+  }
+
+  componentWillUnmount() {
+    StatusBar.setHidden(false);
+  }
+
   render() {
     const { post } = this.props;
     return (
-      <ScrollView style={s.container}>
-        <View style={s.imageWrapper}>
-          <Image style={s.image} source={{ uri: 'http://lorempixel.com/563/300/' }} />
+      <ScrollView style={style.container}>
+        <PostTitle title={post.title} />
+        <View style={style.body}>
+          <Category category={post.tipo} />
+          <Article title={post.title} description={post.description} />
+          <Field label="Autor" field={post.nombre} />
+          <Field label="Cumple con el principio" field={post.principio} />
+          <Field label="Cumple con el instrumento" field={post.instrumento} />
+          <Field label="Institución" field={post.institucion} />
         </View>
-        <Article title={post.title} description={post.description} />
-        <Field label="CUMPLE CON EL PRINCIPIO" field={post.proposito} />
-        <Field label="CUMPLE CON EL INSTRUMENTO" field={post.intrumento} />
-        <Field label="AUTOR" field={post.autor} />
       </ScrollView>
     );
   }
 }
-
-const s = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-  },
-  imageWrapper: {
-    alignSelf: 'stretch',
-    height: 200,
-  },
-  image: {
-    flex: 1,
-    width: null,
-    height: null,
-    resizeMode: 'cover',
-  },
-});
 
 export default Post;

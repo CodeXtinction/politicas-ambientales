@@ -5,7 +5,7 @@ import { colors } from 'utils/theme';
 import style from './style';
 
 function Input({ icon, label, keyField, value, handleChange }) {
-  const color = value ? colors.primary2 : colors.heading3;
+  const color = value ? colors.success : colors.heading3;
   return (
     <View style={style.container}>
       <View style={style.icon}>
@@ -14,7 +14,7 @@ function Input({ icon, label, keyField, value, handleChange }) {
       <TextInput
         style={style.input}
         placeholder={label}
-        underlineColorAndroid={colors.borderSeparator}
+        underlineColorAndroid={colors.borders}
         placeholderTextColor={colors.heading3}
         onChangeText={val => handleChange(val, keyField)}
         value={value}

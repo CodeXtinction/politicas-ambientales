@@ -4,33 +4,40 @@ import { colors, center, fontFamily } from 'utils/theme';
 export default StyleSheet.create({
   container: {
     flex: 1,
-  },
-  trademark: {
-    flex: 2,
-    alignSelf: 'stretch',
-    paddingTop: 20,
-    ...center,
-  },
-  logo: {
-    width: 141,
-    height: 92,
+    backgroundColor: colors.backgroundLight,
   },
   viewPager: {
-    flex: 4,
+    flex: 1,
+  },
+  legend: {
+    paddingBottom: 40,
+    justifyContent: 'center',
+  },
+  title: {
+    ...fontFamily.bold,
+    fontSize: 24,
+    color: colors.main,
+  },
+  subTitle: {
+    ...fontFamily.bold,
+    fontSize: 24,
+    color: colors.yellowBoom,
   },
   box: {
     flex: 1,
     marginHorizontal: 40,
-    paddingTop: 10,
+    justifyContent: 'center',
   },
+
   inputField: {
     alignItems: 'center',
     flexDirection: 'row',
     paddingHorizontal: 4,
-    borderWidth: 1,
-    borderColor: colors.borderSeparator,
-    borderRadius: 2,
+    // borderWidth: 1,
+    // borderColor: colors.borderSeparator,
+    borderRadius: 4,
     marginBottom: 5,
+    backgroundColor: colors.background,
   },
   icon: {
     width: 50,
@@ -39,7 +46,7 @@ export default StyleSheet.create({
   },
   input: {
     flex: 1,
-    ...fontFamily.regular,
+    ...fontFamily.bold,
     fontSize: 14,
   },
 });

@@ -10,7 +10,7 @@ const style = StyleSheet.create({
     backgroundColor: colors.background,
   },
   title: {
-    ...fontFamily.medium,
+    ...fontFamily.bold,
     fontSize: 14,
     color: colors.heading2,
   },

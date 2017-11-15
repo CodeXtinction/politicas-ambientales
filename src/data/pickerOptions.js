@@ -2,8 +2,8 @@ export default {
   tipoPolitica: [
     { key: 1, name: 'Transporte' },
     { key: 2, name: 'Energia' },
-    { key: 3, name: 'Recuros Naturales' },
-    { key: 4, name: 'Producción Limpia' },
+    { key: 3, name: 'Recursos Naturales' },
+    { key: 4, name: 'Produccion Limpia' },
     { key: 5, name: 'Agraria o Industrial' },
     { key: 6, name: 'Desarrollo Urbano' },
   ],

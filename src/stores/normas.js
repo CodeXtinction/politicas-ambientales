@@ -1,14 +1,12 @@
 import { observable, action, toJS, computed, runInAction } from 'mobx';
-import axios from 'axios';
+import { AsyncStorage } from 'react-native';
+import client from 'helpers/client';
 import post from 'models/post';
-
-axios.defaults.headers.common.Authorization =
-  'JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1OWUyNDc4ZDJhODMzZjM5MTkwZWJjZDUiLCJpYXQiOjE1MDgxMTk2Mjd9.4hMoAvMXUR3rJS8L-l0M0TR36l5gh1GtKjEhNm_vqqA';
 
 class Store {
   @observable newPost = post;
   @observable posts = [];
-  @observable isLogged = true;
+  @observable refreshing = false;
 
   @action
   handleChange(key, value) {
@@ -18,17 +16,44 @@ class Store {
   @action
   clearPost() {
     this.newPost = post;
-    // test
   }
 
   createPost() {
-    console.log(toJS(this.newPost));
-    return axios.post('http://192.168.0.103:3000/api/v1/posts/', toJS(this.newPost));
+    return client.post('posts', toJS(this.newPost));
   }
 
   @action
-  Login() {
-    this.isLogged = !this.isLogged;
+  getPosts() {
+    this.refreshing = true;
+    return client
+      .get('posts')
+      .then((res) => {
+        const posts = res.data;
+        AsyncStorage.setItem('posts', JSON.stringify(posts));
+        runInAction(() => {
+          this.posts = posts;
+          this.refreshing = false;
+        });
+      })
+      .catch((e) => {
+        runInAction(() => {
+          this.refreshing = false;
+        });
+      });
+  }
+
+  @action
+  getLocalPosts() {
+    AsyncStorage.getItem('posts', (err, res) => {
+      if (res) {
+        this.posts = JSON.parse(res);
+      }
+    });
+  }
+
+  @computed
+  get postDataSource() {
+    return toJS(this.posts);
   }
 }
 

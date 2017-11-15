@@ -1,29 +1,32 @@
 /* eslint-disable react/prefer-stateless-function  */
 
 import React, { Component } from 'react';
+import { observer, inject } from 'mobx-react/native';
 import { View, FlatList } from 'react-native';
 import Card from 'components/Card';
-import posts from 'data/post';
+import { screens } from 'utils/constants';
 
 import style from './style';
 import Avatar from './Avatar';
+import EmptyList from './EmptyList';
 
+@inject('auth', 'normas')
+@observer
 class Profile extends Component {
   constructor(props) {
     super(props);
     this.pushPost = this.pushPost.bind(this);
+    this.pushCreate = this.pushCreate.bind(this);
+    this.logOut = this.logOut.bind(this);
   }
 
   pushPost(post) {
     this.props.navigator.push({
-      screen: 'normas.Post',
+      ...screens.POST,
       passProps: {
         post,
       },
       navigatorStyle: {
-        navBarBackgroundColor: '#fff',
-        tabBarHidden: true,
-        navBarHideOnScroll: true,
         navBarCustomView: 'normas.NavBar',
         navBarCustomViewInitialProps: {
           post,
@@ -32,13 +35,34 @@ class Profile extends Component {
     });
   }
 
+  logOut() {
+    const { auth, navigator } = this.props;
+    auth.logOut();
+    navigator.resetTo({
+      ...screens.LOGIN,
+    });
+  }
+
+  pushCreate() {
+    this.props.navigator.push({
+      ...screens.CREATE,
+    });
+  }
+
   render() {
+    const { profile } = this.props.auth;
+    const { normas } = this.props;
+    const userPosts = normas.postDataSource.filter(post => post.user._id === profile._id);
     return (
       <View style={style.container}>
         <FlatList
-          ListHeaderComponent={() => <Avatar />}
-          data={posts}
+          data={userPosts}
+          ListEmptyComponent={() => <EmptyList onPress={this.pushCreate} />}
+          ListHeaderComponent={() => (
+            <Avatar profile={profile} postCount={userPosts.length} onPress={this.logOut} />
+          )}
           renderItem={({ item }) => <Card post={item} onPress={this.pushPost} />}
+          keyExtractor={item => item._id}
         />
       </View>
     );

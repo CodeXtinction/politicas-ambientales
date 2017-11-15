@@ -1,31 +1,42 @@
 import { StyleSheet } from 'react-native';
-import { colors } from 'utils/theme';
+import { colors, fontFamily } from 'utils/theme';
 
 export default StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.background,
-    borderTopWidth: 1,
-    borderColor: colors.borderSeparator,
   },
   scroll: {
     flex: 1,
   },
   pickers: {
     backgroundColor: colors.backgroundLight,
-    paddingVertical: 20,
+    paddingBottom: 25,
     marginHorizontal: 10,
-    borderRadius: 4,
-    // elevation: 1,
+    borderRadius: 10,
+    marginVertical: 20,
   },
   info: {
-    // marginHorizontal: 10,
     backgroundColor: colors.backgroundLight,
-    borderRadius: 4,
-    paddingHorizontal: 10,
+    borderRadius: 10,
     paddingLeft: 0,
     marginHorizontal: 10,
-    paddingVertical: 20,
-    // elevation: 1,
+    paddingBottom: 25,
+  },
+  sectionTitle: {
+    paddingHorizontal: 15,
+    paddingTop: 20,
+    paddingBottom: 10,
+    borderBottomWidth: 1,
+    borderColor: colors.borders,
+    marginBottom: 10,
+    // backgroundColor: colors.background3,
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
+  },
+  title: {
+    fontSize: 14,
+    color: colors.heading2,
+    ...fontFamily.bold,
   },
 });

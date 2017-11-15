@@ -4,7 +4,6 @@ import { center, fontFamily, colors } from 'utils/theme';
 export default StyleSheet.create({
   navBar: {
     height: 54,
-    elevation: 3,
   },
   backButton: {
     width: 54,

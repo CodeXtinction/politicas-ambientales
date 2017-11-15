@@ -5,8 +5,6 @@ export default StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.background,
-    borderTopWidth: 1,
-    borderColor: colors.borderSeparator,
   },
   inputContainer: {
     flex: 1,
@@ -23,5 +21,8 @@ export default StyleSheet.create({
     ...fontFamily.light,
     fontSize: 18,
     color: colors.heading1,
+  },
+  inputDescription: {
+    height: 140,
   },
 });

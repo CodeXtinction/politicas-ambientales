@@ -1,16 +1,18 @@
 import { Navigation } from 'react-native-navigation';
 import { screens } from 'utils/constants';
 
+import LogOut from 'components/Logout';
+import NavBar from 'components/NavBar';
 import Main from './Main';
 import Home from './Home';
 import Feed from './Feed';
 import Profile from './Profile';
 import Create from './Create';
 import Post from './Post';
-import NavBar from '../components/NavBar';
 import Composer from './Composer';
 import Root from './Root';
 import Login from './Login';
+import About from './About';
 
 export default function registerScreens(store: {}, Provider: {}) {
   Navigation.registerComponent(screens.MAIN.screen, () => Main, store, Provider);
@@ -23,4 +25,6 @@ export default function registerScreens(store: {}, Provider: {}) {
   Navigation.registerComponent(screens.LOGIN.screen, () => Login, store, Provider);
   Navigation.registerComponent('normas.Post', () => Post);
   Navigation.registerComponent('normas.NavBar', () => NavBar);
+  Navigation.registerComponent('normas.Logout', () => LogOut);
+  Navigation.registerComponent(screens.ABOUT.screenId, () => About);
 }

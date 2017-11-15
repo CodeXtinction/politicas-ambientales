@@ -1,33 +1,32 @@
 import React from 'react';
-import { View, Text } from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
+import { View, Text, Image, TouchableNativeFeedback } from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
 import { colors } from 'utils/theme';
 
 import style from './style';
 
-function Avatar() {
+function Avatar({ profile, postCount, onPress }) {
   return (
     <View style={style.container}>
       <View style={style.top} />
-      <LinearGradient
-        start={{ x: 0.0, y: 1.0 }}
-        end={{ x: 0.7, y: 1.0 }}
-        colors={['#FF512F', '#DD2476']}
-        style={style.duogram}
-      >
-        <Text style={style.initials}>JD</Text>
-      </LinearGradient>
-      <View style={style.counter}>
-        <Text style={style.number}>5</Text>
+      <View style={style.duogram}>
+        <Image resizeMode="cover" source={require('img/stock.png')} style={style.photo} />
       </View>
-      <Text style={style.name}>Jane Doe</Text>
-      <Text style={style.job}>Enginier</Text>
+      <View style={style.counter}>
+        <Text style={style.number}>{postCount}</Text>
+      </View>
+      <Text style={style.name}>{profile.name}</Text>
+      <Text style={style.job}>{profile.job}</Text>
+      <TouchableNativeFeedback onPress={onPress}>
+        <View style={style.logout}>
+          <Text style={style.logOutText}>SALIR</Text>
+        </View>
+      </TouchableNativeFeedback>
       <View style={style.history}>
-        <Text style={style.separator}>
+        <View style={style.icon}>
           <Feather name="edit-2" color={colors.heading3} size={20} />
-          {'  Mi actividad'}
-        </Text>
+        </View>
+        <Text style={style.separator}>{'  Mi actividad'}</Text>
       </View>
     </View>
   );

@@ -4,6 +4,7 @@ import { center, fontFamily } from 'utils/theme';
 export default StyleSheet.create({
   container: {
     flexDirection: 'row',
+    paddingRight: 10,
   },
   icon: {
     width: 50,

@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react/native';
-import { View, TextInput } from 'react-native';
+import { View, TextInput, ToastAndroid, ScrollView } from 'react-native';
 import { screnOpts, screens } from 'utils/constants';
 import { colors } from 'utils/theme';
+import { iconsMap } from 'helpers/Icons';
 
-import CreateButton from 'components/CreateButton';
-import NextButton from 'components/NextButton';
+import SubmitPolitica from 'components/SubmitPolitica';
 
 import style from './style';
 
@@ -23,6 +23,8 @@ class Composer extends Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.submit = this.submit.bind(this);
+    this.actionMessage = this.actionMessage.bind(this);
+    this.goToHome = this.goToHome.bind(this);
   }
 
   handleChange(key, value) {
@@ -30,11 +32,73 @@ class Composer extends Component {
     normas.handleChange(key, value);
   }
 
+  actionMessage(message, alert) {
+    const { navigator } = this.props;
+    const color = alert ? colors.alert : colors.success;
+    navigator.showSnackbar({
+      text: message,
+      textColor: '#fff',
+      duration: 'long',
+      backgroundColor: color,
+    });
+  }
+
+  goToHome() {
+    const { navigator } = this.props;
+    navigator.resetTo({
+      ...screens.MAIN,
+      topTabs: [
+        {
+          ...screens.HOME,
+          icon: iconsMap.home,
+        },
+        {
+          ...screens.FEED,
+          icon: iconsMap.zap,
+        },
+        {
+          ...screens.PROFILE,
+          icon: iconsMap.user,
+        },
+        {
+          ...screens.ABOUT,
+          icon: iconsMap['more-horizontal'],
+        },
+      ],
+    });
+  }
+
   submit() {
     const { normas } = this.props;
-    normas.createPost().then((res) => {
-      console.log(res);
-    });
+    const { newPost } = this.props.normas;
+    const { description } = newPost;
+    const isEmpty = newPost.title && newPost.description;
+    const isShort = description.length > 100;
+
+    if (!isEmpty) {
+      this.actionMessage('Completa todos los campos', true);
+      return;
+    }
+
+    if (!isShort) {
+      this.actionMessage('Descripcion muy corta, minimo 100 palabras', true);
+      return;
+    }
+
+    normas
+      .createPost()
+      .then((res) => {
+        console.log(res);
+        if (res.status === 201) {
+          ToastAndroid.show('Politica creada!', ToastAndroid.LONG);
+          this.goToHome();
+        }
+        normas.getPosts();
+      })
+      .catch((error) => {
+        console.log(error);
+        this.actionMessage('Ha ocurrido un error', true);
+      });
   }
 
   render() {
@@ -53,22 +117,29 @@ class Composer extends Component {
             }}
             onChangeText={val => this.handleChange('title', val)}
             value={newPost.title}
+            placeholderTextColor={colors.heading3}
           />
-          <TextInput
-            style={[style.description, { height: this.state.height }]}
-            placeholder={'Breve descripción de la politica'}
-            multiline
-            underlineColorAndroid="transparent"
-            autoCapitalize="sentences"
-            onContentSizeChange={(event) => {
-              this.setState({ height: event.nativeEvent.contentSize.height });
-            }}
-            maxLength={400}
-            onChangeText={val => this.handleChange('description', val)}
-            value={newPost.description}
-          />
+          <View />
+          <View>
+            <ScrollView style={style.inputDescription}>
+              <TextInput
+                style={[style.description, { height: this.state.height }]}
+                placeholder={'Breve descripción de la politica'}
+                multiline
+                underlineColorAndroid="transparent"
+                autoCapitalize="sentences"
+                onContentSizeChange={(event) => {
+                  this.setState({ height: event.nativeEvent.contentSize.height });
+                }}
+                maxLength={400}
+                onChangeText={val => this.handleChange('description', val)}
+                value={newPost.description}
+                placeholderTextColor={colors.heading3}
+              />
+            </ScrollView>
+          </View>
         </View>
-        <NextButton title="ENVIAR POLITICA" onPress={this.submit} />
+        <SubmitPolitica onPress={this.submit} />
       </View>
     );
   }

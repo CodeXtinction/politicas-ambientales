@@ -5,7 +5,5 @@ export default StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.background,
-    borderTopWidth: 1,
-    borderColor: colors.borderSeparator,
   },
 });

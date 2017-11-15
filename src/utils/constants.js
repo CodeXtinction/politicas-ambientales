@@ -2,39 +2,46 @@ import { colors } from './theme';
 
 export const screnOpts = {
   MAIN: {
-    navBarTextColor: colors.heading3,
+    navBarTextColor: colors.highlight,
     navBarHideOnScroll: true,
-    navBarBackgroundColor: colors.backgroundLight,
-    navBarTextFontFamily: 'rubik_light',
+    navBarBackgroundColor: colors.topTabs,
+    navBarTextFontFamily: 'rubik_medium',
     navBarTextFontSize: 16,
-    // navBarHidden: true,
+    navBarHidden: false,
     // navBarHeight: 10,
-    topBarElevationShadowEnabled: false,
-    navBarTitleTextCentered: true,
+    topBarElevationShadowEnabled: true,
+    navBarTitleTextCentered: false,
+    tabBarHidden: true,
   },
   CREATE: {
     navBarTextFontFamily: 'rubik_medium',
     navBarTextFontSize: 14,
-    navBarTextColor: colors.heading1,
-    navBarButtonColor: colors.heading1,
-    navBarBackgroundColor: colors.backgroundLight,
-    topBarElevationShadowEnabled: false,
-    navBarTitleTextCentered: true,
+    navBarTextColor: colors.highlight,
+    navBarButtonColor: colors.highlight,
+    navBarBackgroundColor: colors.topTabs,
+    topBarElevationShadowEnabled: true,
+    navBarTitleTextCentered: false,
+    // navBarHideOnScroll: true,
+    // tabBarHidden: true,
   },
   COMPOSER: {
-    navBarTextFontFamily: 'rubik_medium',
-    navBarTextFontSize: 14,
-    navBarTextColor: colors.heading1,
-    navBarButtonColor: colors.heading1,
-    navBarBackgroundColor: colors.backgroundLight,
+    navBarButtonColor: colors.main,
     topBarElevationShadowEnabled: false,
-    navBarTitleTextCentered: true,
+    navBarBackgroundColor: colors.background,
   },
   ROOT: {
     navBarHidden: true,
+    topBarElevationShadowEnabled: false,
   },
   LOGIN: {
     navBarHidden: true,
+  },
+  POST: {
+    navBarBackgroundColor: colors.primary,
+    navBarHideOnScroll: true,
+    tabBarHidden: true,
+    topBarElevationShadowEnabled: false,
+    navBarButtonColor: colors.highlight,
   },
 };
 
@@ -44,7 +51,7 @@ export const screens = {
   },
   MAIN: {
     screen: 'normas.Main',
-    title: 'CREANDO REDES',
+    title: 'Creando Redes',
   },
   HOME: {
     screenId: 'normas.Home',
@@ -61,9 +68,14 @@ export const screens = {
   },
   COMPOSER: {
     screen: 'normas.Composer',
-    title: 'YA CASI!',
   },
   LOGIN: {
     screen: 'normas.Login',
+  },
+  POST: {
+    screen: 'normas.Post',
+  },
+  ABOUT: {
+    screenId: 'normas.About',
   },
 };

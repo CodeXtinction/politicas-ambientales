@@ -5,20 +5,15 @@ export default StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.background,
-    borderTopWidth: 1,
-    borderColor: colors.borderSeparator,
   },
   main: {
     flex: 2,
     ...center,
   },
-  icon: {
+  image: {
+    marginTop: 20,
     width: 160,
     height: 160,
-    borderRadius: 160 / 2,
-    // borderWidth: 1,
-    // borderColor: colors.heading3,
-    ...center,
   },
   legend: {
     flex: 2,

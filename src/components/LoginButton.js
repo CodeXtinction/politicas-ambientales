@@ -14,26 +14,22 @@ const style = StyleSheet.create({
     height: 50,
     ...center,
     borderRadius: 4,
+    backgroundColor: colors.primary,
   },
   text: {
-    ...fontFamily.medium,
+    ...fontFamily.bold,
     fontSize: 14,
     color: colors.highlight,
   },
 });
 
-function LoginButton({ title }) {
+function LoginButton({ title, onPress }) {
   return (
     <View style={style.container}>
-      <TouchableNativeFeedback onPress={() => null}>
-        <LinearGradient
-          start={{ x: 0.0, y: 1.0 }}
-          end={{ x: 0.7, y: 1.0 }}
-          colors={['#3494E6', '#EC6EAD']}
-          style={style.button}
-        >
+      <TouchableNativeFeedback onPress={onPress}>
+        <View style={style.button}>
           <Text style={style.text}>{title}</Text>
-        </LinearGradient>
+        </View>
       </TouchableNativeFeedback>
     </View>
   );

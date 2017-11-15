@@ -13,7 +13,7 @@ export default StyleSheet.create({
     height: 40,
     borderRadius: 50,
     borderWidth: 2,
-    borderColor: colors.borderSeparator,
+    borderColor: colors.highlight,
   },
   info: {
     paddingLeft: 10,

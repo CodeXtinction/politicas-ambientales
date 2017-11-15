@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Button } from 'react-native';
+import { View } from 'react-native';
 import { inject, observer } from 'mobx-react/native';
 import { screens, screnOpts } from 'utils/constants';
 import { iconsMap } from 'helpers/Icons';
@@ -7,7 +7,7 @@ import Animation from 'lottie-react-native';
 
 import style from './style';
 
-@inject('normas')
+@inject('auth')
 @observer
 class Login extends Component {
   static navigatorStyle = {
@@ -21,7 +21,7 @@ class Login extends Component {
   }
 
   componentDidMount() {
-    const { isLogged } = this.props.normas;
+    const { isLogged } = this.props.auth;
     this.animation.play();
     setTimeout(() => {
       if (isLogged) {
@@ -50,7 +50,7 @@ class Login extends Component {
           icon: iconsMap.user,
         },
         {
-          ...screens.PROFILE,
+          ...screens.ABOUT,
           icon: iconsMap['more-horizontal'],
         },
       ],
@@ -65,7 +65,6 @@ class Login extends Component {
   }
 
   render() {
-    const { isLogged } = this.props.normas;
     return (
       <View style={style.container}>
         <Animation
@@ -73,7 +72,7 @@ class Login extends Component {
             this.animation = animation;
           }}
           style={style.loader}
-          source={require('animations/loader_3.json')}
+          source={require('animations/loading.json')}
           loop
         />
       </View>

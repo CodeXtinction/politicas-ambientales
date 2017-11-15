@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react/native';
-import { View, ScrollView } from 'react-native';
+import { View, ScrollView, Text, KeyboardAvoidingView } from 'react-native';
 import { screnOpts, screens } from 'utils/constants';
+import { colors } from 'utils/theme';
 
 import ListHeader from 'components/ListHeader';
 import Picker from 'components/Picker';
@@ -22,6 +23,7 @@ class Create extends Component {
     super(props);
     this.pushComposer = this.pushComposer.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidMount() {
@@ -30,7 +32,25 @@ class Create extends Component {
   }
 
   pushComposer() {
-    this.props.navigator.push({
+    const { navigator } = this.props;
+    const { newPost } = this.props.normas;
+
+    const isNotEmpty =
+      newPost.tipo &&
+      newPost.institucion &&
+      newPost.principio &&
+      newPost.instrumento &&
+      newPost.iniciativa &&
+      newPost.nombre &&
+      newPost.ocupacion &&
+      newPost.email &&
+      newPost.telefono;
+
+    if (!isNotEmpty) {
+      this.actionMessage('Completa todos los campos', true);
+      return;
+    }
+    navigator.push({
       ...screens.COMPOSER,
     });
   }
@@ -40,13 +60,26 @@ class Create extends Component {
     normas.handleChange(key, value);
   }
 
+  actionMessage(message, alert) {
+    const { navigator } = this.props;
+    const color = alert ? colors.alert : colors.success;
+    navigator.showSnackbar({
+      text: message,
+      textColor: '#fff',
+      duration: 'long',
+      backgroundColor: color,
+    });
+  }
+
   render() {
     const { newPost } = this.props.normas;
     return (
       <View style={style.container}>
         <ScrollView style={style.scroll}>
-          <ListHeader title="Datos generales" />
           <View style={style.pickers}>
+            <View style={style.sectionTitle}>
+              <Text style={style.title}>Datos generales</Text>
+            </View>
             <Picker
               label="Tipo "
               options={pickerOpts.tipoPolitica}
@@ -55,7 +88,7 @@ class Create extends Component {
               keyField="tipo"
             />
             <Picker
-              label="Institucion"
+              label="Institución"
               options={pickerOpts.institucion}
               onValueChange={this.handleChange}
               value={newPost.institucion}
@@ -83,8 +116,10 @@ class Create extends Component {
               keyField="iniciativa"
             />
           </View>
-          <ListHeader title="Datos personales" />
           <View style={style.info}>
+            <View style={style.sectionTitle}>
+              <Text style={style.title}>Datos personales</Text>
+            </View>
             <Input
               label="Nombre y apellido"
               icon="user"
@@ -114,7 +149,7 @@ class Create extends Component {
               value={newPost.telefono}
             />
           </View>
-          <NextButton onPress={this.pushComposer} title="SIGUIENTE" />
+          <NextButton onPress={this.pushComposer} title="SIGUIENTE" color={colors.main} />
         </ScrollView>
       </View>
     );

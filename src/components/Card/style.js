@@ -16,7 +16,7 @@ export default StyleSheet.create({
   },
   tag: {
     padding: 4,
-    backgroundColor: colors.primary2,
+    backgroundColor: colors.alert,
     ...center,
     borderRadius: 2,
   },

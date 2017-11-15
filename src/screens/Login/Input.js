@@ -14,15 +14,26 @@ const propTypes = {
   handleChange: PropTypes.func.isRequired,
   keyboard: PropTypes.string,
   secureTextEntry: PropTypes.bool,
+  autoCapitalize: PropTypes.string,
 };
 
 const defaultProps = {
   keyboard: 'default',
   secureTextEntry: false,
   value: '',
+  autoCapitalize: 'none',
 };
 
-function Input({ icon, label, value, keyField, handleChange, keyboard, secureTextEntry }) {
+function Input({
+  icon,
+  label,
+  value,
+  keyField,
+  handleChange,
+  keyboard,
+  secureTextEntry,
+  autoCapitalize,
+}) {
   return (
     <View style={style.inputField}>
       <View style={style.icon}>
@@ -38,6 +49,7 @@ function Input({ icon, label, value, keyField, handleChange, keyboard, secureTex
         keyboardType={keyboard}
         secureTextEntry={secureTextEntry}
         returnKeyType="done"
+        autoCapitalize={autoCapitalize}
       />
     </View>
   );

@@ -1,35 +1,32 @@
 import React from 'react';
 import { View, StyleSheet, Text } from 'react-native';
+import { colors, fontFamily } from 'utils/theme';
 
-function Field({ label, field }) {
-  return (
-    <View style={s.container}>
-      <Text style={s.label}>
-        {label}
-      </Text>
-      <Text style={s.field}>
-        {field}
-      </Text>
-    </View>
-  );
-}
-
-const s = StyleSheet.create({
+const style = StyleSheet.create({
   container: {
     alignSelf: 'stretch',
     paddingHorizontal: 20,
-    paddingVertical: 5,
+    marginBottom: 5,
   },
   label: {
-    fontFamily: 'rubik_bold',
-    fontSize: 13,
-    color: '#000',
+    ...fontFamily.bold,
+    fontSize: 14,
+    color: colors.heading2,
   },
   field: {
-    fontFamily: 'rubik_regular',
-    fontSize: 13,
-    color: '#757575',
+    ...fontFamily.bold,
+    fontSize: 14,
+    color: colors.heading3,
   },
 });
+
+function Field({ label, field }) {
+  return (
+    <View style={style.container}>
+      <Text style={style.label}>{label}</Text>
+      <Text style={style.field}>{field}</Text>
+    </View>
+  );
+}
 
 export default Field;

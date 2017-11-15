@@ -4,7 +4,7 @@ import { colors } from 'utils/theme';
 import style from './style';
 
 function PickerField({ label, options, onValueChange, value, keyField }) {
-  const color = value ? colors.primary2 : colors.highlight;
+  const color = value ? colors.success : colors.highlight;
   return (
     <View style={style.container}>
       <View style={style.timeline}>

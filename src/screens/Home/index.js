@@ -1,13 +1,14 @@
 /* eslint-disable react/prefer-stateless-function */
 
 import React, { Component } from 'react';
-import { View, Text, StatusBar } from 'react-native';
-import Feather from 'react-native-vector-icons/Feather';
-import { colors } from 'utils/theme';
+import { observer, inject } from 'mobx-react/native';
+import { View, Text, StatusBar, Image } from 'react-native';
 import FloatButton from 'components/FloatButton';
 import { screens } from 'utils/constants';
 import style from './style';
 
+@inject('normas')
+@observer
 class Home extends Component {
   constructor(props) {
     super(props);
@@ -15,8 +16,10 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    StatusBar.setBarStyle('dark-content');
-    // StatusBar.setHidden(true);
+    // StatusBar.setBarStyle('dark-content');
+    const { normas } = this.props;
+    normas.getLocalPosts();
+    normas.getPosts();
   }
 
   pushCreate() {
@@ -29,9 +32,7 @@ class Home extends Component {
     return (
       <View style={style.container}>
         <View style={style.main}>
-          <View style={style.icon}>
-            <Feather name="sun" size={70} color={colors.primary2} />
-          </View>
+          <Image style={style.image} source={require('img/fog.png')} resizeMode="contain" />
         </View>
         <View style={style.legend}>
           <Text style={style.title}>Nueva Política</Text>
